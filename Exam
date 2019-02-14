@@ -1,0 +1,221 @@
+Labxam.java
+
+public class Labxam {
+
+private double scores[]=new double[3];
+
+public Labxam(double scores[]) {
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+this.scores[i]=scores[i];
+
+}
+
+}
+
+  
+
+public double calHighestScore()
+
+{
+
+double max=scores[0];
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+if(max<scores[i])
+
+max=scores[i];
+
+}
+
+return max;
+
+}
+
+  
+
+public double calLowestScore()
+
+{
+
+double min=scores[0];
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+if(min>scores[i])
+
+min=scores[i];
+
+}
+
+return min;
+
+}
+
+public double average()
+
+{
+
+int tot=0;
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+tot+=scores[i];
+
+}
+
+return ((double)tot)/scores.length;
+
+}
+
+@Override
+
+public String toString() {
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+System.out.print(scores[i]+" ");
+
+}
+
+return "";  
+
+}
+
+}
+
+_________________
+
+Test.java
+
+import java.util.Scanner;
+
+public class Test {
+
+public static void main(String[] args) {
+
+Labxam l[]=new Labxam[3];
+
+String names[]={"Allen","Bob","Nicole"};
+
+double scores[]=new double[3];
+
+/*
+
+* Creating an Scanner class object which is used to get the inputs
+
+* entered by the user
+
+*/
+
+Scanner sc = new Scanner(System.in);
+
+for(int i=0;i<names.length;i++)
+
+{
+
+System.out.print("Please enter xam scores for "+names[i]+":");
+
+for(int j=0;j<3;j++)
+
+{
+
+scores[j]=sc.nextDouble();
+
+}
+
+Labxam la=new Labxam(scores);
+
+l[i]=la;
+
+}
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+System.out.print(names[i]+":");
+
+  
+
+System.out.print(l[i]);
+
+System.out.println();
+
+}
+
+System.out.println("\nHere are the averages for each student :");
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+System.out.println(names[i]+":"+l[i].average());
+
+}
+
+  
+
+System.out.println("\nHere are the best scores for each student :");
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+System.out.println(names[i]+":"+l[i].calHighestScore());
+
+}
+
+  
+
+System.out.println("\nHere are the worst scores for each student :");
+
+for(int i=0;i<scores.length;i++)
+
+{
+
+System.out.println(names[i]+":"+l[i].calLowestScore());
+
+}
+
+}
+
+}
+
+____________________
+
+Output:
+
+Please enter xam scores for Allen:82 75 86
+Please enter xam scores for Bob:78 88 95
+Please enter xam scores for Nicole:98 69 77
+Allen:82.0 75.0 86.0
+Bob:78.0 88.0 95.0
+Nicole:98.0 69.0 77.0
+
+Here are the averages for each student :
+Allen:81.0
+Bob:87.0
+Nicole:81.33333333333333
+
+Here are the best scores for each student :
+Allen:86.0
+Bob:95.0
+Nicole:98.0
+
+Here are the worst scores for each student :
+Allen:75.0
+Bob:78.0
+Nicole:69.0
